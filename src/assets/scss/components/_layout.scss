@@ -1,0 +1,47 @@
+/*  -------------------------------------------------------------
+    Header
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+header {
+  padding-top: 10em;
+  padding-bottom: 2em;
+  margin-bottom: 8em;
+
+  background-color: rgba(255, 255, 255, 0.05);
+  color: whitesmoke;
+}
+
+header h1 {
+  color: antiquewhite;
+}
+
+/*  -------------------------------------------------------------
+    Content
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+.darken {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: ghostwhite;
+}
+
+#actions {
+  padding-top: 3em;
+}
+
+#actions .row {
+  padding-top: 1em;
+  padding-bottom: 4em;
+}
+
+/*  -------------------------------------------------------------
+    Headings
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+#actions i {
+  color: #5e191c;
+  font-size: 128px;
+}
+
+h3 {
+  color: antiquewhite;
+}

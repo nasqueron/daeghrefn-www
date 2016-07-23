@@ -1,0 +1,25 @@
+/*  -------------------------------------------------------------
+    Dæghrefn web site
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Project:        Nasqueron
+    Author:         Dereckson
+    Dependencies:   foundation motion-ui
+    Filename:       app.css
+    Licence:        CC-BY 4.0, MIT
+    -------------------------------------------------------------    */
+
+/*  -------------------------------------------------------------
+    Beowulf
+
+    Cotton MS Vitellius A.XV, British Library
+    Photography by Ken Eckert (CC BY-SA 4.0)
+
+    https://commons.wikimedia.org/wiki/File:Beowulf_Manuscript.jpg
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+body {
+  background-color: #091417;
+  background-image: url("/assets/img/1280px-Beowulf_Manuscript.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}

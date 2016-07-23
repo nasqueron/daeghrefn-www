@@ -1,0 +1,10 @@
+# Mac OS X
+.DS_Store
+
+# Node artifacts
+node_modules
+npm-debug.log
+bower_components
+
+# Released version
+dist

@@ -1,0 +1,27 @@
+/*  -------------------------------------------------------------
+    Dæghrefn web site
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Project:        Nasqueron
+    Author:         Dereckson
+    Dependencies:   foundation motion-ui
+    Filename:       app.css
+    Licence:        CC-BY 4.0, MIT
+    -------------------------------------------------------------    */
+
+/*  -------------------------------------------------------------
+    Block grid
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+.blockgrid img {
+  margin-top: 1em;
+}
+
+.black-margin {
+  border: 8px solid black;
+}
+
+.white {
+  background-color: white;
+  color: black;
+  font-weight: 700;
+}

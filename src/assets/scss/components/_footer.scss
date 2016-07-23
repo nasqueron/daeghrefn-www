@@ -1,0 +1,58 @@
+/*  -------------------------------------------------------------
+    Dæghrefn web site
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Project:        Nasqueron
+    Author:         http://zurb.com/building-blocks/centered-footer
+    Dependencies:   foundation motion-ui
+    Filename:       app.css
+    Licence:        CC-BY 4.0, MIT
+    -------------------------------------------------------------    */
+
+/*  -------------------------------------------------------------
+    Centered footer
+
+    http://zurb.com/building-blocks/centered-footer
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.footer {
+  background-color: #100b04;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 4rem;
+  p {
+    &.slogan {
+      color: #8d9093;
+      font-size: 1.8rem;
+      margin: 0 0 1rem;
+    }
+  }
+  .links a {
+    list-style: none;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 3rem 0 2rem;
+    margin: 0;
+    &::after {
+      content: "•";
+      padding: 0 0.4rem 0 0.8rem;
+    }
+    &:last-child::after {
+      content: "";
+      padding: 0 0.4rem 0 0.8rem;
+    }
+  }
+}
+
+.footer-extra-info {
+  color: #8f9296;
+  font-size: 0.75rem;
+  margin: 3em 0 0 0;
+}
