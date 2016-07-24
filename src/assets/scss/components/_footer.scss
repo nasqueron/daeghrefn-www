@@ -34,20 +34,8 @@
     list-style: none;
     font-weight: bold;
     color: #ffffff;
-    padding: 3rem 0 2rem;
     margin: 0;
-
-    &::after {
-      content: "•";
-      padding: 0 0.4rem 0 0.8rem;
-    }
-
-    &:last-child::after {
-      content: "";
-      padding: 0 0.4rem 0 0.8rem;
-    }
   }
-
 }
 
 .service-name {
@@ -58,4 +46,53 @@
   color: #8f9296;
   font-size: 0.75rem;
   margin: 3em 0 0 0;
+}
+
+/*  -------------------------------------------------------------
+    < 640 px
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+@include breakpoint(small down) {
+  footer {
+    h3 {
+      font-size: 1.4rem;
+    }
+
+    .links {
+      font-size: 1rem;
+    }
+
+    .links a {
+      display: block;
+    }
+  }
+
+  .footer-extra-info {
+    br {
+      display: block;
+      margin: 0.2rem 0;
+    }
+  }
+}
+
+/*  -------------------------------------------------------------
+    >= 640 px
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+@include breakpoint(medium) {
+  footer {
+    .links a {
+      padding: 3rem 0 2rem;
+
+      &::after {
+        content: "•";
+        padding: 0 0.4rem 0 0.8rem;
+      }
+
+      &:last-child::after {
+        content: "";
+        padding: 0 0.4rem 0 0.8rem;
+      }
+    }
+  }
 }

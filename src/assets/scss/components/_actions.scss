@@ -11,45 +11,56 @@
     -------------------------------------------------------------    */
 
 /*  -------------------------------------------------------------
-    Table of contents
-    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    ::  Header
-    ::  Content
-    ::  Headings
-
-*/
-
-/*  -------------------------------------------------------------
-    Header
+    General padding
     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
 
-header {
-  padding-top: 10em;
-  padding-bottom: 2em;
-  margin-bottom: 8em;
-
-  background-color: rgba(255, 255, 255, 0.05);
-  color: whitesmoke;
+#actions {
+  padding-top: 3em;
 }
 
-header h1 {
-  color: antiquewhite;
+#actions .row {
+  padding-top: 1em;
+  padding-bottom: 4em;
 }
 
 /*  -------------------------------------------------------------
-    Content
+    Icons
     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
 
-.darken {
-  background-color: rgba(0, 0, 0, 0.85);
-  color: ghostwhite;
+#actions i {
+  color: #5e191c;
+  font-size: 128px;
 }
 
 /*  -------------------------------------------------------------
-    Headings
+    < 640 px
     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
 
-h3 {
-  color: antiquewhite;
+@include breakpoint(small down) {
+  #actions {
+    h3 {
+      text-align: center;
+      font-size: 1.4rem;
+    }
+
+    .button {
+      display: block;
+    }
+  }
+}
+
+/*  -------------------------------------------------------------
+    < 1024 px
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
+
+@include breakpoint(medium down) {
+  #actions {
+    h3 {
+      margin-bottom: 2rem;
+    }
+
+    .button {
+      margin-top: 2rem;
+    }
+  }
 }
