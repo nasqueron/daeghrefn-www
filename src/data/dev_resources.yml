@@ -1,0 +1,27 @@
+- workboard:
+  title: Project workboard
+  link:
+    href: https://devcentral.nasqueron.org/tag/d%C3%A6ghrefn/
+    text: "#Dæghrefn"
+  content: bugs and tasks
+
+- rVIPER:
+  title: Core code
+  link:
+    href: https://devcentral.nasqueron.org/diffusion/VIPER/
+    text: rVIPER
+  content: TCL
+
+- rDWD:
+  title: Wikidata access layer
+  link:
+    href: https://devcentral.nasqueron.org/diffusion/DWD/
+    text: rDWD
+  content: Python
+
+- rVIPERWWW:
+  title: This site
+  link:
+    href: https://devcentral.nasqueron.org/diffusion/VIPERWWW/
+    text: rVIPERWWW
+  content: HTML, CSS, Gulp

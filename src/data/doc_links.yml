@@ -1,0 +1,9 @@
+- wolfplex:
+  url: https://www.wolfplex.be/wiki/D%C3%A6ghrefn
+  location: On Wolfplex wiki
+  content: describes server commands
+
+- wikidata:
+  url: https://www.wikidata.org/wiki/User:D%C3%A6ghrefnBot
+  location: On Wikidata
+  content: describes Wikidata commands

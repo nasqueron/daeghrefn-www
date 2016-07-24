@@ -18,8 +18,9 @@
                 <p>You use some Dæghrefn feature? You can contribute to write documentation.</p>
                 <p>Currently, some elements could be found at the following places:</p>
                 <ul>
-                    <li><a href="https://www.wolfplex.be/wiki/D%C3%A6ghrefn">On Wolfplex wiki</a> — describes server commands</li>
-                    <li><a href="https://www.wikidata.org/wiki/User:D%C3%A6ghrefnBot">On Wikidata</a> — describes Wikidata commands</li>
+                    {{#each doc_links}}
+                    <li><a href="{{ url }}">{{ location }}</a> — {{ content }}</li>
+                    {{/each}}
                 </ul>
             </div>
         </div>
@@ -33,10 +34,12 @@
                 <p>Dæghrefn and Wearg live on the IRC Freenode network, where any channel could benefit of our solutions.</p>
                 <p>The server infrastructure is maintained by Nasqueron as a service offered to the free culture communities.</p>
                 <div class="row small-up-1 medium-up-2 large-up-4 text-center blockgrid white black-margin">
-                    <div class="column">Nasqueron<br /><img src="{{root}}assets/img/logo-nasqueron.png"></div>
-                    <div class="column">Vikidia<br /><img src="{{root}}assets/img/logo-vikidia.png"></div>
-                    <div class="column">Wikimedia<br /><img src="{{root}}assets/img/logo-wikimedia.png"></div>
-                    <div class="column">Wolfplex<br /><img src="{{root}}assets/img/logo-wolfplex.png"></div>
+                    {{#each communities}}
+                    <div class="column">
+                        {{ ucfirst this }}<br />
+                        <img src="{{ root }}assets/img/logo-{{ this }}.png">
+                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -62,7 +65,13 @@
                 </p>
                 <p>Explain your needs and we'll offer you a solution. We create
                     <em>sur mesure</em> code for each community.</p>
-                <a href="https://devcentral.nasqueron.org/maniphest/task/edit/form/1/?tags=d%C3%A6ghrefn&subscribers=Dereckson&title=Add%20D%C3%A6ghrefn%20to%20%3Cwrite%20here%20the%20channel%20name%3E&description=[Write%20here%20what%20problems%20you%20want%20the%20bot%20to%20solve.]" class="button round">Request new channel</a>
+                <form action="{{ tasks.request_channel.url }}">
+                    {{#each tasks.request_channel.parameters}}
+                    <input type="hidden" name="{{ @key }}" value="{{ this }}">
+                    {{/each}}
+                    <input type="submit" class="button round"
+                           value="{{ tasks.request_channel.action }}">
+                </form>
             </div>
         </div>
 
@@ -76,13 +85,22 @@
                     A few third-party software components could have their own licence.</p>
                     <p>You're welcome to contribute.</p>
                 <ul>
-                    <li><strong>Project workboard:</strong> <a href="https://devcentral.nasqueron.org/tag/d%C3%A6ghrefn/">#Dæghrefn</a> (bugs and tasks)</li>
-                    <li><strong>Core code:</strong> <a href="https://devcentral.nasqueron.org/diffusion/VIPER/">rVIPER</a> (TCL)</li>
-                    <li><strong>Wikidata access layer:</strong> <a href="https://devcentral.nasqueron.org/diffusion/DWD/">rDWD</a> (Python)</li>
-                    <li><strong>This site:</strong> <a href="https://devcentral.nasqueron.org/diffusion/VIPERWWW/">rVIPERWWW</a> (HTML, CSS, Gulp)</li>
+                    {{#each dev_resources}}
+                    <li>
+                        <strong>{{ title }}:</strong>
+                        <a href="{{ link.href }}">{{ link.text }}</a>
+                        ({{content}})
+                    </li>
+                    {{/each}}
                 </ul>
 
-                <a href="https://devcentral.nasqueron.org/maniphest/task/edit/form/1/?tags=d%C3%A6ghrefn" class="button round">Report an issue</a>
+                <form action="{{ tasks.report_issue.url }}">
+                    {{#each tasks.report_issue.parameters}}
+                    <input type="hidden" name="{{ @key }}" value="{{ this }}">
+                    {{/each}}
+                    <input type="submit" class="button round"
+                           value="{{ tasks.report_issue.action }}">
+                </form>
             </div>
         </div>
     </section>

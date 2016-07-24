@@ -1,0 +1,14 @@
+request_channel:
+  action: Request new channel
+  url: https://devcentral.nasqueron.org/maniphest/task/edit/form/1/
+  parameters:
+    tags: dæghrefn
+    subscribers: Dereckson
+    title: "Add Dæghrefn to <write here the channel name>"
+    description: "[Write here what problems you want the bot to solve.]"
+
+report_issue:
+  action: Report issue
+  url: https://devcentral.nasqueron.org/maniphest/task/edit/form/1/
+  parameters:
+    tags: dæghrefn
