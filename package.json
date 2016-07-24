@@ -7,7 +7,7 @@
     "start": "gulp",
     "build": "gulp build --production"
   },
-  "author": "Sébastien Santoro aka Dereckqon <dereckson@espace-win.org>",
+  "author": "Sébastien Santoro aka Dereckson <dereckson@espace-win.org>",
   "homepage": "https://daeghrefn.nasqueron.org/",
   "license": "CC-BY-4.0",
   "keywords": ["www"],
