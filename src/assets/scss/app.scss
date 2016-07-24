@@ -19,7 +19,7 @@
     :: Dependencies
     :: Our design
 
- */
+*/
 
 /*  -------------------------------------------------------------
     Dependencies
@@ -32,7 +32,6 @@
 @import 'foundation';
 @import 'motion-ui';
 @import '_foundation-icons';
-
 
 @include foundation-global-styles;
 @include foundation-grid;
@@ -82,3 +81,4 @@
 @import 'components/book';
 @import 'components/footer';
 @import 'components/layout';
+@import 'components/responsiveness';
