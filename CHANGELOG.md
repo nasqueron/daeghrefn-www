@@ -5,6 +5,7 @@ This project adheres to [semantic versioning](http://semver.org/).
 ## [Unreleased]
 ### Fixed
 - Call for actions buttons back to 100% in smaller viewports
+- Small vertical spacing issues are fixed
 
 ### Changed
 - More punchy icon color

@@ -15,12 +15,13 @@
     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
 
 #actions {
-  padding-top: 3em;
-}
+  >.row {
+    padding: 4em 0;
+  }
 
-#actions .row {
-  padding-top: 1em;
-  padding-bottom: 4em;
+  >.row:last-child {
+    padding-bottom: 20vh;
+  }
 }
 
 /*  -------------------------------------------------------------
