@@ -31,6 +31,7 @@
             <div class="large-8 columns">
                 <h3>Communities we serve</h3>
                 <p>Dæghrefn and Wearg live on the IRC Freenode network, where any channel could benefit of our solutions.</p>
+                <p>The server infrastructure is maintained by Nasqueron as a service offered to the free culture communities.</p>
                 <div class="row small-up-1 medium-up-2 large-up-4 text-center blockgrid white black-margin">
                     <div class="column">Nasqueron<br /><img src="{{root}}assets/img/logo-nasqueron.png"></div>
                     <div class="column">Vikidia<br /><img src="{{root}}assets/img/logo-vikidia.png"></div>
@@ -46,8 +47,16 @@
             </div>
             <div class="large-8 columns">
                 <h3>Add a channel</h3>
-                <p>Explain your needs and we'll offer you a solution. We create <em>sur mesure</em> code for each community.</p>
-                <p>As it's already connected to a job queue, a RabbitMQ broker and a MySQL database, pretty anything is possible.</p>
+                <p>We can add new channels to Dæghrefn if you've a specific
+                    need for an utility general-purpose bot.</p>
+                <p><strong>CI:</strong> Another bot, Wearg , is connected to
+                a RabbitMQ message broker, fuelled by a notifications center to
+                process events from Phabricator, GitHub or Docker Hub. This can
+                be used to notify channels about new commits, pull requests on
+                GitHub, etc.
+                That can be adapted to received events from other systems.</p>
+                <p>Explain your needs and we'll offer you a solution. We create
+                    <em>sur mesure</em> code for each community.</p>
                 <a href="https://devcentral.nasqueron.org/maniphest/task/edit/form/1/?tags=d%C3%A6ghrefn&subscribers=Dereckson&title=Add%20D%C3%A6ghrefn%20to%20%3Cwrite%20here%20the%20channel%20name%3E&description=[Write%20here%20what%20problems%20you%20want%20the%20bot%20to%20solve.]" class="button round">Request new channel</a>
             </div>
         </div>
@@ -58,6 +67,9 @@
             </div>
             <div class="large-8 columns">
                 <h3>Development</h3>
+                <p>All the code we write is open source and released under BSD-2-Clause license.<br />
+                    A few third parties components could have their own licence.</p>
+                    <p>You're welcome to contribute.</p>
                 <ul>
                     <li><strong>Project workboard:</strong> <a href="https://devcentral.nasqueron.org/tag/d%C3%A6ghrefn/">#Dæghrefn</a> (bugs and tasks)</li>
                     <li><strong>Core code:</strong> <a href="https://devcentral.nasqueron.org/diffusion/VIPER/">rVIPER</a> (TCL)</li>
