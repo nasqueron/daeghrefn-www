@@ -55,6 +55,8 @@
     :: 35. Tooltip
     :: 36. Top Bar
 
+    :: 37. Path for fonts
+
 */
 
 // 1. Global
@@ -579,3 +581,8 @@ $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 1rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
+
+// 37. Path for fonts
+// ------------------
+
+$fi-path: "../fonts";

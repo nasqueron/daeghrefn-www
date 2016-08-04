@@ -114,8 +114,8 @@ function images() {
 
 // Copy fonts used in CSS to the "dist" folder
 function cssfonts() {
-    return gulp.src('./bower_components/foundation-icon-fonts/**/*.{ttf,woff,eoff,svg}')
-        .pipe(gulp.dest(PATHS.dist + '/assets/css'));
+    return gulp.src('./bower_components/foundation-icon-fonts/*.{ttf,woff,eot,svg}')
+        .pipe(gulp.dest(PATHS.dist + '/assets/fonts'));
 }
 
 // Start a server with BrowserSync to preview the site in
