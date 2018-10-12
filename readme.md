@@ -43,19 +43,18 @@ To use this repository, your computer needs:
 
 To manually set up the repository, first download it with Git:
 
-```bash
-git clone https://github.com/nasqueron/daeghrefn-www daeghrefn-www
+```
+$ git clone https://github.com/nasqueron/daeghrefn-www daeghrefn-www
 ```
 
 Then open the folder in your command line, and install the needed dependencies:
 
-```bash
-cd daeghrefn-www
-npm install
-bower install
+```
+$ cd daeghrefn-www
+$ yarn
 ```
 
-Finally, run `npm start` to run Gulp. The finished site will be created in a folder called `dist`, viewable at this URL:
+Finally, run `yarn start` to run Gulp. The finished site will be created in a folder called `dist`, viewable at this URL:
 
 ```
 http://localhost:8000
@@ -63,4 +62,4 @@ http://localhost:8000
 
 ### Create locally a production-ready version
 
-To create compressed, production-ready assets, run `npm run build`.
+To create compressed, production-ready assets, run `yarn run build`.

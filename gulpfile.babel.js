@@ -1,14 +1,18 @@
 'use strict';
 
-import plugins  from 'gulp-load-plugins';
-import yargs    from 'yargs';
-import browser  from 'browser-sync';
-import gulp     from 'gulp';
-import panini   from 'panini';
-import rimraf   from 'rimraf';
-import sherpa   from 'style-sherpa';
-import yaml     from 'js-yaml';
-import fs       from 'fs';
+import plugins       from 'gulp-load-plugins';
+import yargs         from 'yargs';
+import browser       from 'browser-sync';
+import gulp          from 'gulp';
+import panini        from 'panini';
+import rimraf        from 'rimraf';
+import yaml          from 'js-yaml';
+import fs            from 'fs';
+import webpackStream from 'webpack-stream';
+import webpack2      from 'webpack';
+import named         from 'vinyl-named';
+import uncss         from 'uncss';
+import autoprefixer  from 'autoprefixer';
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -25,12 +29,9 @@ function loadConfig() {
 }
 
 // Build the "dist" folder by running all of the below tasks
+// Sass must be run later so UnCSS can search for used classes in the others assets.
 gulp.task('build',
- gulp.series(
-     clean,
-     gulp.parallel(pages, sass, javascript, images, cssfonts, copy)
- )
-);
+ gulp.series(clean, gulp.parallel(pages, javascript, images, fonts, copy), sass));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
@@ -71,30 +72,54 @@ function resetPages(done) {
 // Compile Sass into CSS
 // In production, the CSS is compressed
 function sass() {
+
+  const postCssPlugins = [
+    // Autoprefixer
+    autoprefixer({ browsers: COMPATIBILITY }),
+
+    // UnCSS - Uncomment to remove unused styles in production
+    // PRODUCTION && uncss.postcssPlugin(UNCSS_OPTIONS),
+  ].filter(Boolean);
+
   return gulp.src('src/assets/scss/app.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       includePaths: PATHS.sass
     })
       .on('error', $.sass.logError))
-    .pipe($.autoprefixer({
-      browsers: COMPATIBILITY
-    }))
-    // Comment in the pipe below to run UnCSS in production
-    //.pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
-    .pipe($.if(PRODUCTION, $.cssnano()))
+    .pipe($.postcss(postCssPlugins))
+    .pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie9' })))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe(gulp.dest(PATHS.dist + '/assets/css'))
     .pipe(browser.reload({ stream: true }));
 }
 
+let webpackConfig = {
+  mode: (PRODUCTION ? 'production' : 'development'),
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ "@babel/preset-env" ],
+            compact: false
+          }
+        }
+      }
+    ]
+  },
+  devtool: !PRODUCTION && 'source-map'
+}
+
 // Combine JavaScript into one file
 // In production, the file is minified
 function javascript() {
-  return gulp.src(PATHS.javascript)
+  return gulp.src(PATHS.entries)
+    .pipe(named())
     .pipe($.sourcemaps.init())
-    .pipe($.babel())
-    .pipe($.concat('app.js'))
+    .pipe(webpackStream(webpackConfig, webpack2))
     .pipe($.if(PRODUCTION, $.uglify()
       .on('error', e => { console.log(e); })
     ))
@@ -106,15 +131,15 @@ function javascript() {
 // In production, the images are compressed
 function images() {
   return gulp.src('src/assets/img/**/*')
-    .pipe($.if(PRODUCTION, $.imagemin({
-      progressive: true
-    })))
+    .pipe($.if(PRODUCTION, $.imagemin([
+      $.imagemin.jpegtran({ progressive: true }),
+    ])))
     .pipe(gulp.dest(PATHS.dist + '/assets/img'));
 }
 
 // Copy fonts used in CSS to the "dist" folder
-function cssfonts() {
-    return gulp.src('./bower_components/foundation-icon-fonts/*.{ttf,woff,eot,svg}')
+function fonts() {
+    return gulp.src('./node_modules/foundation-icon-fonts/*.{ttf,woff,eot,svg}')
         .pipe(gulp.dest(PATHS.dist + '/assets/fonts'));
 }
 
@@ -122,8 +147,7 @@ function cssfonts() {
 function server(done) {
   browser.init({
     server: PATHS.dist, port: PORT
-  });
-  done();
+  }, done);
 }
 
 // Reload the browser with BrowserSync
@@ -135,9 +159,11 @@ function reload(done) {
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, copy);
-  gulp.watch('src/pages/**/*.html').on('change', gulp.series(pages, browser.reload));
-  gulp.watch('src/{layouts,partials}/**/*.html').on('change', gulp.series(resetPages, pages, browser.reload));
-  gulp.watch('src/assets/scss/**/*.scss', sass);
-  gulp.watch('src/assets/js/**/*.js').on('change', gulp.series(javascript, browser.reload));
-  gulp.watch('src/assets/img/**/*').on('change', gulp.series(images, browser.reload));
+  gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, browser.reload));
+  gulp.watch('src/{layouts,partials}/**/*.html').on('all', gulp.series(resetPages, pages, browser.reload));
+  gulp.watch('src/data/**/*.{js,json,yml}').on('all', gulp.series(resetPages, pages, browser.reload));
+  gulp.watch('src/helpers/**/*.js').on('all', gulp.series(resetPages, pages, browser.reload));
+  gulp.watch('src/assets/scss/**/*.scss').on('all', sass);
+  gulp.watch('src/assets/js/**/*.js').on('all', gulp.series(javascript, browser.reload));
+  gulp.watch('src/assets/img/**/*').on('all', gulp.series(images, browser.reload));
 }

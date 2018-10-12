@@ -31,7 +31,7 @@
 
 @import 'foundation';
 @import 'motion-ui';
-@import '_foundation-icons';
+@import 'node_modules/foundation-icon-fonts/_foundation-icons';
 
 @include foundation-global-styles;
 @include foundation-grid;
