@@ -12,8 +12,8 @@ This project adheres to [semantic versioning](http://semver.org/).
 - Motion UI animations.
 - Easter egg around these animations.
 
-## [0.0.2] - 2016-07-24
-### Fixed
+## [0.0.2] - 2016-07-24
+### Fixed
 - Call for actions buttons back to 100% in smaller viewports.
 - Small vertical spacing issues are fixed.
 

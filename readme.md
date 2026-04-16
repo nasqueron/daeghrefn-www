@@ -4,7 +4,7 @@ This website hosted at https://daeghrefn.nasqueron.org/
 provides an web presence to Dæghrefn, an utility bot on
 Libera.
 
-## Purpose
+## Purpose
 - An answer to the question 'Who are you?'
 - Provide a documentation
 

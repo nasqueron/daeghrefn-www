@@ -18,7 +18,7 @@
             <p>Currently, some elements could be found at the following places:</p>
             <ul>
                 {{#each doc_links}}
-                <li><a href="{{ url }}">{{ location }}</a> — {{ content }}</li>
+                <li><a href="{{ url }}">{{ location }}</a> — {{ content }}</li>
                 {{/each}}
             </ul>
         </div>
@@ -35,8 +35,8 @@
             <div class="row small-up-1 medium-up-2 large-up-4 text-center blockgrid white black-margin">
                 {{#each communities}}
                 <div class="column">
-                    {{ ucfirst this }}<br />
-                    <img src="{{ root }}assets/img/logo-{{ this }}.png">
+                    {{ ucfirst this }}<br />
+                    <img src="{{ root }}assets/img/logo-{{ this }}.png">
                 </div>
                 {{/each}}
             </div>
@@ -86,7 +86,7 @@
             <ul>
                 {{#each dev_resources}}
                 <li>
-                    <strong>{{ title }}:</strong>
+                    <strong>{{ title }}:</strong>
                     <a href="{{ link.href }}">{{ link.text }}</a>
                     ({{content}})
                 </li>
