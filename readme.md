@@ -2,7 +2,7 @@
 
 This website hosted at https://daeghrefn.nasqueron.org/
 provides an web presence to Dæghrefn, an utility bot on
-Freenode.
+Libera.
 
 ## Purpose
 - An answer to the question 'Who are you?'
